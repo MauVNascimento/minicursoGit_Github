@@ -17,8 +17,12 @@ jobs:
   clone-repositorio:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Listar diretórios
+      - name: Configurar Git
+        run: git --version  # só para mostrar que o git já existe
+  
+      - name: Clonar repositório manualmente
+        run: git clone https://github.com/${{ github.repository }} .
+      - name: listar diretorio
         run: ls -la
 
   node-job:
