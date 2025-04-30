@@ -1,0 +1,22 @@
+name: Test secrets e variables
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    environment: Ambiente
+    steps:
+    - name: Print secret
+      run: echo "A senha é ${{ secrets.SECRETE }}"
+
+    - name: Print variables
+      run: echo "A senha é ${{ vars.VARIAVEL }}"
+
+  clone-repositorio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Listar diretórios
+        run: ls -la
