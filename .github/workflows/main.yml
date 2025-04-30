@@ -43,3 +43,16 @@ jobs:
 
       - name: Rodar um arquivo JavaScript
         run: node sum.test.js
+
+  readme-att:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar User e Email
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Modificar Readme
+        run: echo "# Titulo adicionado pelo GitHub Actions" >> README.md
+      - name: Push Direto Para o Repositório
+        run: git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+      
