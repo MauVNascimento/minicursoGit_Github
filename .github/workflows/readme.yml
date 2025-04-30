@@ -1,0 +1,22 @@
+name: Test secrets e variables
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  readme-modify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Puxar Repositório
+        uses: actions/checkout@v4
+      
+      - name: Modificar Readme
+        run: echo "Texto muito insano" >> README.md
+        
+      - name: Configurar User e Email
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Push Direto Para o Repositório
+        run: git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
