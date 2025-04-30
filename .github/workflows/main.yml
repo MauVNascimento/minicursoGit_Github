@@ -13,3 +13,10 @@ jobs:
 
     - name: Print variables
       run: echo "A senha é ${{ vars.VARIAVEL }}"
+
+  clone-repositorio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v4
+      - name: Listar diretórios
+        run: ls -la
