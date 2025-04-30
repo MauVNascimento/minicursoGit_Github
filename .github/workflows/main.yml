@@ -20,3 +20,22 @@ jobs:
       - uses: actions/checkout@v4
       - name: Listar diretórios
         run: ls -la
+
+  node-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v4
+      - name: Usar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Checar versão do Node
+        run: node --version
+        
+      - name: Verificar arquivos no diretório
+        run: ls -la
+
+      - name: Rodar um arquivo JavaScript
+        run: node sum.test.js
